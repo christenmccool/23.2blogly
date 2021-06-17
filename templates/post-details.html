@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block main %}
+
+<h1>{{post.title}}</h1>
+
+<p>{{post.content}}</p>
+
+<p><em>{{post.user.get_full_name()}}</em><p>
+
+<form>
+    <a href="/users/{{post.user.id}}" class="btn btn-outline-secondary">Cancel</a>
+    <button formaction="/posts/{{post.id}}/edit" formmethod="get" class="btn btn-primary">Edit</button>
+    <button type="submit" formaction="/posts/{{post.id}}/delete" formmethod="post" class="btn btn-danger">Delete</button>
+</form>
+
+
+<div class="d-grid gap-2">
+    <a href="/users" class="btn mx-5 mt-5 mb-1 p-1 btn-outline-secondary">Users</a>
+    <a href="/" class="btn mx-5 p-1 btn-outline-secondary">Home</a>
+</div>
+
+
+{% endblock %}
+
+

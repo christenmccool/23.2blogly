@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Post{% endblock %}
+
+{% block main %}
+
+<h1>Add Post for {{user.get_full_name()}}</h1>
+
+<form action="/users/posts/new" method="post">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title" required>
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <input type="text" class="form-control" id="content" name="content" placeholder="Enter content" required>
+    </div>
+
+    <a href="/users/{{user.id}}" class="btn btn-light btn-outline-secondary">Cancel</a>
+    <button formaction="/users/{{user.id}}/posts/new" formmethod="post" class="btn btn-success">Add</button>
+</form>
+
+<div class="d-grid gap-2">
+    <a href="/users" class="btn mx-5 mt-5 mb-1 p-1 btn-outline-secondary">Users</a>
+    <a href="/" class="btn mx-5 p-1 btn-outline-secondary">Home</a>
+</div>
+
+
+{% endblock %}

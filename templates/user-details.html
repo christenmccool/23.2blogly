@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{user.get_full_name()}}{% endblock %}
+
+{% block main %}
+
+<div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src={{user.image_url}} class="img-fluid" alt="user image">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{user.get_full_name()}}</h5>
+            <form>
+                <button formaction="/users/{{user.id}}/edit" formmethod="get" class="btn btn-primary">Edit</button>
+                <button type="submit" formaction="/users/{{user.id}}/delete" formmethod="post" class="btn btn-danger">Delete</button>
+            </form>
+            <h5 class="m-2">Posts</h5>
+            <ul>
+                {% for post in user.posts %}
+                <li class="p-1"><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+                {% endfor %}
+            </ul>
+            <a href="/users/{{user.id}}/posts/new" class="btn btn-primary">Add Post</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="d-grid gap-2">
+    <a href="/users" class="btn mx-5 mt-5 mb-1 p-1 btn-outline-secondary">Users</a>
+    <a href="/" class="btn mx-5 p-1 btn-outline-secondary">Home</a>
+</div>
+
+{% endblock %}
+
+

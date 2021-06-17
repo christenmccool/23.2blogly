@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogly Home{% endblock %}
+
+{% block main %}
+
+<h1 class="text-center">Welcome to Blogly!</h1>
+
+<h2 class="text-center">Blogly Recent Posts</h2>
+
+{% for post in posts %}
+    <h3>{{post.title}}</h3>
+    <p>{{post.content}}</p>
+    <p>By {{post.user.get_full_name()}} on {{post.get_date()}}</p>
+
+{% endfor %}
+
+<div class="d-grid gap-2">
+    <a href="/users" class="btn m-5 p-1 btn-outline-secondary">Users</a>
+</div>
+
+
+{% endblock %}
